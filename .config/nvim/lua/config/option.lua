@@ -47,3 +47,4 @@ vim.opt.clipboard:append("unnamedplus")
 vim.opt.hlsearch = true
 vim.opt.mouse = ""
 vim.g.editorconfig = true
+vim.o.completeopt = "menuone,noselect,fuzzy"

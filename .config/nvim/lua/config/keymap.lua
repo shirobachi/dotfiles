@@ -39,7 +39,7 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "x", '"_x', opts)
 
 -- Replace the word cursor is on globally
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+vim.keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = "Replace word cursor is on globally" })
 
 -- tab stuff
@@ -71,3 +71,14 @@ vim.keymap.set("n", "<leader>lx", function()
     underline = isLspDiagnosticsVisible,
   })
 end, { desc = "Toggle LSP diagnostics" })
+
+-- Completion remaps
+local function pum(key, fallback)
+  return function()
+    return vim.fn.pumvisible() == 1 and key or fallback
+  end
+end
+
+vim.keymap.set("i", "<C-j>", pum("<C-n>", "<C-j>"), { expr = true, desc = "Completion next" })
+vim.keymap.set("i", "<C-k>", pum("<C-p>", "<C-k>"), { expr = true, desc = "Completion prev" })
+vim.keymap.set("i", "<C-l>", pum("<C-y>", "<C-l>"), { expr = true, desc = "Completion accept" })

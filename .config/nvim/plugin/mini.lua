@@ -38,4 +38,11 @@ later(function()
   splitjoin.setup({ mappings = { toggle = "" } })
   vim.keymap.set({ "n", "x" }, "sj", splitjoin.join, { desc = "Join arguments" })
   vim.keymap.set({ "n", "x" }, "sk", splitjoin.split, { desc = "Split arguments" })
+
+  require("mini.pick").setup()
+  require("mini.extra").setup()
+  vim.keymap.set("n", "<leader>pk", function() MiniExtra.pickers.keymaps() end, { desc = "Search for keymap" })
+
+  require("mini.completion").setup()
+  MiniIcons.tweak_lsp_kind()
 end)
