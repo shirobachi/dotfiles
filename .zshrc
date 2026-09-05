@@ -100,5 +100,3 @@ export EDITOR='nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# alias dotfiles="/usr/bin/git --git-dir=$HOME/repo/dotfiles/ --work-tree=$HOME"
