@@ -11,4 +11,4 @@
 # ridden in every subshell.
 
 test -s ~/.alias && . ~/.alias || true
-alias dotfiles=/usr/bin/git --git-dir=$HOME/repo/dotfiles/ --work-tree=$HOME
+alias dotfiles="/usr/bin/git --git-dir=$HOME/repo/dotfiles/ --work-tree=$HOME"
