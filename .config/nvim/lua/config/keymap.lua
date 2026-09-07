@@ -29,8 +29,10 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
 
--- format using the built in
-vim.keymap.set("n", "<leader>ff", vim.lsp.buf.format)
+-- format using conform
+vim.keymap.set("n", "<leader>ff", function()
+	require("conform").format({ lsp_format = "fallback" })
+end, { desc = "Format buffer" })
 
 -- Unmaps Q in normal mode
 vim.keymap.set("n", "Q", "<nop>")
@@ -39,8 +41,12 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "x", '"_x', opts)
 
 -- Replace the word cursor is on globally
-vim.keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-  { desc = "Replace word cursor is on globally" })
+vim.keymap.set(
+	"n",
+	"<leader>ss",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Replace word cursor is on globally" }
+)
 
 -- tab stuff
 vim.keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" })
@@ -57,26 +63,26 @@ vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current spli
 
 -- Copy filepath to the clipboard
 vim.keymap.set("n", "<leader>fp", function()
-  local filePath = vim.fn.expand("%:~")
-  vim.fn.setreg("+", filePath)
-  print("File path copied to clipboard: " .. filePath)
+	local filePath = vim.fn.expand("%:~")
+	vim.fn.setreg("+", filePath)
+	print("File path copied to clipboard: " .. filePath)
 end, { desc = "Copy file path to clipboard" })
 
 -- Toggle LSP diagnostics visibility
 local isLspDiagnosticsVisible = true
 vim.keymap.set("n", "<leader>lx", function()
-  isLspDiagnosticsVisible = not isLspDiagnosticsVisible
-  vim.diagnostic.config({
-    virtual_text = isLspDiagnosticsVisible,
-    underline = isLspDiagnosticsVisible,
-  })
+	isLspDiagnosticsVisible = not isLspDiagnosticsVisible
+	vim.diagnostic.config({
+		virtual_text = isLspDiagnosticsVisible,
+		underline = isLspDiagnosticsVisible,
+	})
 end, { desc = "Toggle LSP diagnostics" })
 
 -- Completion remaps
 local function pum(key, fallback)
-  return function()
-    return vim.fn.pumvisible() == 1 and key or fallback
-  end
+	return function()
+		return vim.fn.pumvisible() == 1 and key or fallback
+	end
 end
 
 vim.keymap.set("i", "<C-j>", pum("<C-n>", "<C-j>"), { expr = true, desc = "Completion next" })
