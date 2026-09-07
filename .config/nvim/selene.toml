@@ -1,0 +1,13 @@
+std = "roblox"
+
+[initial_globals]
+vim = "readonly"
+MiniDeps = "readonly"
+MiniIcons = "readonly"
+MiniNotify = "readonly"
+MiniFiles = "readonly"
+MiniGit = "readonly"
+MiniDiff = "readonly"
+MiniPick = "readonly"
+MiniExtra = "readonly"
+MiniSnippets = "readonly"

@@ -22,8 +22,13 @@ later(function()
 			"prettier",
 			"ruff",
 			"dockerfmt",
+			"selene",
+			"yamllint",
+			"markdownlint",
+			"hadolint",
 		},
 	})
+	vim.cmd("MasonToolsInstall")
 
 	require("lazydev").setup({
 		library = {
@@ -98,8 +103,12 @@ later(function()
 		},
 	})
 
-	vim.lsp.config("yamlls", {
-		filetypes = { "yaml" },
+	vim.lsp.config("bashls", {
+		settings = {
+			bashIde = {
+				shellcheckPath = vim.fn.exepath("shellcheck"),
+			},
+		},
 	})
 
 	vim.lsp.enable({

@@ -3,7 +3,7 @@ local add, now = MiniDeps.add, MiniDeps.now
 now(function()
 	vim.g.matrix_disable_background = true
 	vim.g.matrix_borders = true
-	vim.g.matrix_cursorline_transparent = true
+	vim.g.matrix_cursorline_transparent = false
 	vim.g.matrix_enable_sidebar_background = true
 
 	add("iruzo/matrix-nvim")
