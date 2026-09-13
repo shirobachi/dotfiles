@@ -16,16 +16,18 @@ later(function()
 			"docker-compose-language-service",
 			"marksman",
 			"pyright",
+			"ansible-language-server",
 			"stylua",
 			"shfmt",
 			"shellcheck",
 			"prettier",
 			"ruff",
-			"dockerfmt",
+			-- "dockerfmt",
 			"selene",
 			"yamllint",
 			"markdownlint",
 			"hadolint",
+			"ansible-lint",
 		},
 	})
 	vim.cmd("MasonToolsInstall")
@@ -119,5 +121,6 @@ later(function()
 		"docker_compose_language_service",
 		"marksman",
 		"pyright",
+		"ansiblels",
 	})
 end)
