@@ -6,10 +6,6 @@ now(function()
 
 	require("mini.notify").setup()
 	vim.notify = require("mini.notify").make_notify()
-end)
-
-later(function()
-	require("mini.pairs").setup()
 
 	require("mini.files").setup({
 		mappings = {
@@ -20,6 +16,11 @@ later(function()
 		},
 		options = { use_as_default_explorer = true },
 	})
+end)
+
+later(function()
+	require("mini.pairs").setup()
+
 	vim.keymap.set("n", "<leader>ee", "<cmd>lua MiniFiles.open()<CR>", { desc = "Toggle mini file explorer" })
 	vim.keymap.set("n", "<leader>ef", function()
 		MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
