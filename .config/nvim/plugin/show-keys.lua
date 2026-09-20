@@ -13,7 +13,8 @@ later(function()
 			border = "single",
 		},
 	})
-	vim.defer_fn(function()
+
+	vim.keymap.set("n", "<leader>sk", function()
 		require("showkeys").toggle()
-	end, 100)
+	end, { desc = "Toggle Showkeys" })
 end)
