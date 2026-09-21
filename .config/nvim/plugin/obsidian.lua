@@ -5,6 +5,7 @@ later(function()
 	add("obsidian-nvim/obsidian.nvim")
 
 	require("obsidian").setup({
+		legacy_commands = false,
 		workspaces = {
 			{
 				name = "personal",
