@@ -1,0 +1,17 @@
+alias cpToAi='xargs -I{} sh -c '\''echo "==="; echo "FILE:{}"; echo "CONTENT:$(cat "{}")"; echo "FINISH==="'\''|wl-copy'
+grabBraveOpenTabs() {
+python3 -c "
+import glob,os,struct as s
+d=open(max(glob.glob(os.path.expanduser('~/.config/BraveSoftware/Brave-Browser/Default/Sessions/Session_*')),key=os.path.getmtime),'rb').read()
+n={};c={};x=set();p=8
+while p+3<=len(d):
+ z,=s.unpack_from('<H',d,p);i=d[p+2];b=d[p+3:p+2+z]
+ if p+2+z>len(d):break
+ p+=2+z
+ if i==6:t,k,l=s.unpack_from('<iii',b,4);n.setdefault(t,{})[k]=b[16:16+l].decode(errors='ignore')
+ if i==7:t,k=s.unpack_from('<ii',b);c[t]=k
+ if i==16:x.add(s.unpack_from('<i',b)[0])
+print('\n'.join(dict.fromkeys('- [ ] '+u.rstrip('/') for t,v in n.items() if t not in x for u in [v[c.get(t,max(v))]] if u.startswith('http'))))
+"
+}
+alias cd=z
