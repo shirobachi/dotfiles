@@ -17,7 +17,6 @@ later(function()
 			date_format = "%Y-%m-%d",
 		},
 		completion = {
-			nvim_cmp = false,
 			min_chars = 2,
 		},
 		picker = {

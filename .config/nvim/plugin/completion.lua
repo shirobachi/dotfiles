@@ -2,8 +2,6 @@ local add, later = MiniDeps.add, MiniDeps.later
 
 later(function()
 	add("zbirenbaum/copilot.lua")
-	add({ source = "saghen/blink.cmp", checkout = "v1" })
-
 	require("copilot").setup({
 		suggestion = {
 			enabled = true,
@@ -29,6 +27,27 @@ later(function()
 		},
 	})
 
+	add("milanglacier/minuet-ai.nvim")
+	require("minuet").setup({
+		provider = "openai_fim_compatible",
+		provider_options = {
+			openai_fim_compatible = {
+				api_key = "DEEPSEEK_KEY",
+				end_point = "https://api.deepseek.com/beta/completions",
+				model = "deepseek-flash",
+			},
+		},
+		virtualtext = {
+			auto_trigger_ft = {}, -- Keep this empty for manual toggling
+			keymap = {
+				accept = "<A-l>",
+				dismiss = "<A-e>",
+			},
+		},
+	})
+	vim.keymap.set("n", "<leader>mt", ":Minuet virtualtext toggle<CR>", { desc = "Toggle Minuet completions" })
+
+	add({ source = "saghen/blink.cmp", checkout = "v1" })
 	require("blink.cmp").setup({
 		snippets = { preset = "mini_snippets" },
 		keymap = {

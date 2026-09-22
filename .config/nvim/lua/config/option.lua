@@ -30,7 +30,7 @@ vim.opt.smartcase = true
 -- UI
 vim.opt.termguicolors = true
 vim.opt.background = "dark"
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 999
 vim.opt.signcolumn = "yes"
 
 -- window splits
