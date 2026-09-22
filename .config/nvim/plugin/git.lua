@@ -1,16 +1,48 @@
 local later = MiniDeps.later
 
+local dotfiles_git_dir = vim.fn.expand("~/repo/dotfiles")
+local dotfiles_work_tree = vim.env.HOME
+
 local function set_ref(buf)
 	local path = vim.api.nvim_buf_get_name(buf)
-	local cmd = { "git", "-C", vim.fs.dirname(path), "cat-file", "--filters", ":./" .. vim.fs.basename(path) }
-	vim.system(cmd, { text = true }, function(res)
-		if res.code ~= 0 then
-			return
-		end
+	if path == "" then
+		return
+	end
+	local dir = vim.fs.dirname(path)
+	local name = vim.fs.basename(path)
+
+	local function apply(stdout)
 		vim.schedule(function()
 			if vim.api.nvim_buf_is_valid(buf) then
-				MiniDiff.set_ref_text(buf, res.stdout)
+				MiniDiff.set_ref_text(buf, stdout)
 			end
+		end)
+	end
+
+	-- Try normal repo discovery first (covers regular projects, git-crypt repos, etc.)
+	local normal_cmd = { "git", "-C", dir, "cat-file", "--filters", ":./" .. name }
+	vim.system(normal_cmd, { text = true }, function(res)
+		if res.code == 0 then
+			apply(res.stdout)
+			return
+		end
+
+		-- Fall back to the bare dotfiles repo
+		local dotfiles_cmd = {
+			"git",
+			"--git-dir=" .. dotfiles_git_dir,
+			"--work-tree=" .. dotfiles_work_tree,
+			"-C",
+			dir,
+			"cat-file",
+			"--filters",
+			":./" .. name,
+		}
+		vim.system(dotfiles_cmd, { text = true }, function(res2)
+			if res2.code ~= 0 then
+				return
+			end
+			apply(res2.stdout)
 		end)
 	end)
 end
