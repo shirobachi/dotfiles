@@ -1,0 +1,5 @@
+[user]
+	email = simonhryszko@gmail.com
+	name = shirobachi
+[pull]
+	rebase = true
