@@ -110,5 +110,5 @@ if [ -e /home/shirobachi/.nix-profile/etc/profile.d/nix.sh ]; then . /home/shiro
 
 # dotfiles: warn when there are uncommitted changes
 if [ -n "$(/usr/bin/git --git-dir=$HOME/repo/dotfiles/ --work-tree=$HOME status --porcelain 2>/dev/null)" ]; then
-	echo "dotfiles: uncommitted changes -> run dotfiles-backup | dotfiles-with-push"
+	echo "dotfiles: uncommitted changes -> try \`dotfiles-backup\` or \`dotfiles-with-push\`"
 fi
