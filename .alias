@@ -15,3 +15,6 @@ print('\n'.join(dict.fromkeys('- [ ] '+u.rstrip('/') for t,v in n.items() if t n
 "
 }
 alias cd=z
+
+alias dotfiles-backup='dotfiles commit -am "backup $(date +%F_%H-%M-%S)"'
+alias dotfiles-with-push='dotfiles-backup && dotfiles push'

@@ -11,6 +11,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="juanghurtado"
 ZSH_THEME="random"
+ZSH_THEME="arrow"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -106,3 +107,8 @@ source $HOME/.env
  eval "$(zoxide init zsh)"
 
 if [ -e /home/shirobachi/.nix-profile/etc/profile.d/nix.sh ]; then . /home/shirobachi/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# dotfiles: warn when there are uncommitted changes
+if [ -n "$(/usr/bin/git --git-dir=$HOME/repo/dotfiles/ --work-tree=$HOME status --porcelain 2>/dev/null)" ]; then
+	echo "dotfiles: uncommitted changes -> run dotfiles-backup | dotfiles-with-push"
+fi
