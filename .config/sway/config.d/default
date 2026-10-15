@@ -38,9 +38,6 @@ set $powermenu ~/.config/sway/scripts/power_menu.sh
     # Menu
     bindsym $mod+Shift+d exec $menu
 
-    # Lock screen
-    bindsym $mod+f1 exec gtklock
-
     # Activities
     bindsym $mod+p exec ~/.config/sway/scripts/window_switcher.sh
 
