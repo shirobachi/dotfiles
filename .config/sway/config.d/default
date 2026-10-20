@@ -8,7 +8,7 @@ set $up k
 set $right l
 
 # Set default terminal emulator
-set $term footclient
+set $term ghostty
 
 # Application launcher
 set $launcher fuzzel
@@ -111,6 +111,14 @@ set $powermenu ~/.config/sway/scripts/power_menu.sh
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 
+    # Switch to previous/next workspace
+    bindsym {
+        $mod+Ctrl+Left workspace prev
+        $mod+Ctrl+$left workspace prev
+        $mod+Ctrl+Right workspace next
+        $mod+Ctrl+$right workspace next
+    }
+
 #
 # Layout stuff:
 #
@@ -155,15 +163,15 @@ set $powermenu ~/.config/sway/scripts/power_menu.sh
 #
     bindsym {
         # Resize with arrow keys
-        $mod+ctrl+Right resize shrink width 10 px
-        $mod+ctrl+Up resize grow height 10 px
-        $mod+ctrl+Down resize shrink height 10 px
-        $mod+ctrl+Left resize grow width 10 px
+        $mod+Mod1+Right resize shrink width 10 px
+        $mod+Mod1+Up resize grow height 10 px
+        $mod+Mod1+Down resize shrink height 10 px
+        $mod+Mod1+Left resize grow width 10 px
         # Resize with Vim keys
-        $mod+ctrl+$right resize shrink width 10 px
-        $mod+ctrl+$up resize grow height 10 px
-        $mod+ctrl+$down resize shrink height 10 px
-        $mod+ctrl+$left resize grow width 10 px
+        $mod+Mod1+$right resize shrink width 10 px
+        $mod+Mod1+$up resize grow height 10 px
+        $mod+Mod1+$down resize shrink height 10 px
+        $mod+Mod1+$left resize grow width 10 px
     }
 
     # Resize floating windows with mouse scroll:
