@@ -18,3 +18,4 @@ alias cd=z
 
 alias dotfiles-backup='dotfiles commit -am "backup $(date +%F_%H-%M-%S)"'
 alias dotfiles-backup-push='dotfiles-backup; dotfiles push'
+alias r=ranger
