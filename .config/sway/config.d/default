@@ -123,8 +123,8 @@ set $powermenu ~/.config/sway/scripts/power_menu.sh
 # Layout stuff:
 #
     # Set how the current window will be split
-    # Split the window vertically
-    bindsym $mod+v splitv
+    # Split the window vertically (freed for the clipboard manager)
+    #bindsym $mod+v splitv
     # Split the window horizontally
     bindsym $mod+b splith
 
@@ -222,10 +222,10 @@ set $powermenu ~/.config/sway/scripts/power_menu.sh
     # Launch the browser
     bindsym $mod+o exec firefox
 
-    # Launch the clipboard manager
-    bindsym $mod+Ctrl+v exec cliphist list | fuzzel -d -w 90 -l 30 -p "Select an entry to copy it to your clipboard buffer:"| cliphist decode | wl-copy
+    # Launch the clipboard manager (colors follow the waybar palette)
+    bindsym $mod+v exec cliphist list | fuzzel -d -w 90 -l 30 -b 0c222bff -C 35b9ab66 -t 35b9abff --input-color 35b9abff --prompt-color 73ba25ff -m 73ba25ff -s 173f4fff -S 73ba25ff -M 35b9abff -p "Select an entry to copy it to your clipboard buffer:"| cliphist decode | wl-copy
     # Delete an entry from the clipboard manager
-    bindsym $mod+Ctrl+x exec cliphist list | fuzzel -d -w 90 -l 30 -t cc9393ff -S cc9393ff -p "Select an entry to delete it from cliphist:"| cliphist delete
+    #bindsym $mod+Ctrl+x exec cliphist list | fuzzel -d -w 90 -l 30 -b 0c222bff -C ee2e2466 -t 35b9abff --input-color 35b9abff --prompt-color ee2e24ff -m ee2e24ff -s 173f4fff -S ee2e24ff -M 35b9abff -p "Select an entry to delete it from cliphist:"| cliphist delete
     # Note: you can clear all cliphist entries by running `cliphist wipe`
 
 #
