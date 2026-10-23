@@ -12,3 +12,6 @@
 
 test -s ~/.alias && . ~/.alias || true
 alias dotfiles="/usr/bin/git --git-dir=$HOME/repo/dotfiles/ --work-tree=$HOME"
+
+# Added by jcode installer
+export PATH="/home/shirobachi/.local/bin:$PATH"

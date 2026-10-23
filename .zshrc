@@ -112,3 +112,6 @@ if [ -e /home/shirobachi/.nix-profile/etc/profile.d/nix.sh ]; then . /home/shiro
 if [ -n "$(/usr/bin/git --git-dir=$HOME/repo/dotfiles/ --work-tree=$HOME status --porcelain 2>/dev/null)" ]; then
 	echo "dotfiles: uncommitted changes"
 fi
+
+# Added by jcode installer
+export PATH="/home/shirobachi/.local/bin:$PATH"

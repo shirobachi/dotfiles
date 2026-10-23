@@ -4,3 +4,12 @@
 
 # user config directory
 include $HOME/.config/sway/config.d/*
+
+# >>> jcode launch hotkeys (managed) >>>
+# jcode: home
+bindsym Mod4+semicolon exec --no-startup-id "/home/shirobachi/.jcode/hotkey/launch_jcode_0_cmd_semicolon.sh"
+# jcode: last project
+bindsym Mod4+apostrophe exec --no-startup-id "/home/shirobachi/.jcode/hotkey/launch_jcode_1_cmd_quote.sh"
+# jcode: self-dev
+bindsym Mod4+Shift+apostrophe exec --no-startup-id "/home/shirobachi/.jcode/hotkey/launch_jcode_2_cmd_shift_quote.sh"
+# <<< jcode launch hotkeys (managed) <<<
